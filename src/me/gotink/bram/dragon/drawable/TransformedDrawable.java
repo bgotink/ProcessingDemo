@@ -11,13 +11,12 @@ public class TransformedDrawable extends Drawable {
 
 	private float rotation;
 	private Vector2f translation;
-	private Point2f pivot, antiPivot;
+	private Point2f pivot;
 
 	public TransformedDrawable(AbstractApplet applet, Drawable original) {
 		super(applet);
 		this.original = original;
 		translation = new Vector2f();
-		antiPivot = new Point2f();
 	}
 
 	public Vector2f getTranslation() {
@@ -42,7 +41,6 @@ public class TransformedDrawable extends Drawable {
 	
 	public void setPivot(Point2f pivot) {
 		this.pivot = pivot;
-		if (pivot != null) antiPivot.negate(pivot);
 	}
 	
 	@Override
@@ -57,9 +55,7 @@ public class TransformedDrawable extends Drawable {
 		if (pivot == null) 
 			applet.rotate(rotation);
 		else {
-			applet.translate(pivot);
-			applet.rotate(rotation);
-			applet.translate(antiPivot);
+			applet.rotate(rotation, pivot);
 		}
 
 		if (translation != null)

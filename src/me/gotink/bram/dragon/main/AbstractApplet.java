@@ -11,6 +11,12 @@ public abstract class AbstractApplet extends PApplet {
 	public void translate(Tuple2f p) {
 		translate(p.x, p.y);
 	}
+	
+	public void rotate(float angle, Tuple2f axis) {
+		translate(axis.x, axis.y);
+		rotate(angle);
+		translate(-axis.x, -axis.y);
+	}
 
 	public abstract void zoom(int width, int height);
 	public abstract void zoomInstant(int width, int height);
