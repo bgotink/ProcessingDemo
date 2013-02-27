@@ -1,5 +1,6 @@
 package me.gotink.bram.dragon.main;
 
+import codeanticode.glgraphics.GLConstants;
 import me.gotink.bram.dragon.drawable.Dragon;
 import me.gotink.bram.dragon.util.TimeScaler;
 
@@ -54,7 +55,7 @@ public class DragonApplet extends AbstractApplet {
 
 	@Override
 	public void setup() {
-		size(800, 800);
+		size(800, 800, GLConstants.GLGRAPHICS);
 		smooth();
 
 		scale = new Scaler(1);
